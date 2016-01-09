@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>me.tailliez.microshop</groupId>
+    <artifactId>microshop</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>registration</module>
+        <module>service-accounts</module>
+        <module>service-articles</module>
+        <module>front</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Angel.SR3</version>
+    </parent>
+
+<!--    <properties>
+        &lt;!&ndash; Stand-alone RESTFul application for testing only &ndash;&gt;
+        <start-class>Main</start-class>
+        <hsqldb.version>2.3.3</hsqldb.version>
+    </properties>-->
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>me.tailliez.microshop</groupId>
+                <artifactId>registration</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>me.tailliez.microshop</groupId>
+                <artifactId>service-accounts</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>me.tailliez.microshop</groupId>
+                <artifactId>front</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <!-- In-memory database for testing/demos -->
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsqldb.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
